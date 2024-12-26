@@ -1,7 +1,3 @@
-// Prevent default touch behaviors
-document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
-document.addEventListener('touchstart', e => e.preventDefault(), { passive: false });
-
 // Import scenes
 const scenes = {
     'incoming-call': () => import('./scenes/call/call.js').then(m => m.CallScene),
@@ -26,7 +22,7 @@ class App {
     }
 
     init() {
-        // Add click handlers for scene cards
+        // Simple click handler for scene cards
         document.querySelectorAll('.scene-card').forEach(card => {
             card.addEventListener('click', () => {
                 const scene = card.dataset.scene;

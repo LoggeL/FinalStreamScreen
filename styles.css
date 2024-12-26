@@ -30,6 +30,7 @@ html, body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     position: relative;
+    z-index: 0;
 }
 
 .menu-view h1 {
@@ -47,19 +48,22 @@ html, body {
 }
 
 .scene-card {
-    background: #1c1c1e;
-    border-radius: 15px;
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
     cursor: pointer;
     transition: transform 0.2s, background-color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
 .scene-card:hover {
-    background: #2c2c2e;
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
 }
 
 .scene-card:active {
+    background: rgba(255, 255, 255, 0.2);
     transform: scale(0.98);
 }
 
