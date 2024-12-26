@@ -1,0 +1,41 @@
+<div class="gps-view">
+    <div class="status-overlay">
+        <div class="signal-indicator">
+            <i class="fas fa-satellite-dish"></i>
+            <span class="signal-text">GPS-Signal</span>
+            <div class="signal-strength">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="coordinates">
+            <span class="lat">52.5200°N</span>
+            <span class="lng">13.4050°O</span>
+        </div>
+    </div>
+
+    <div class="map-container">
+        <img src="scenes/gps/track.png" alt="Streckenkarte" class="track-map">
+        <div class="location-marker">
+            <div class="pulse"></div>
+            <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="glitch-overlay"></div>
+    </div>
+
+    <div class="accuracy-circle"></div>
+
+    <div class="error-message hidden">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>GPS-Signal verloren</span>
+    </div>
+
+    <div class="signal-warning hidden">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>Schwaches Signal</span>
+    </div>
+</div> 

@@ -1,0 +1,120 @@
+.dialer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+    background: #000;
+    color: #fff;
+}
+
+.number-display-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+
+.number-display {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+    outline: none;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.delete-button:hover {
+    opacity: 1;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.keypad-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    aspect-ratio: 1;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.keypad-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.keypad-button:active {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.call-button {
+    background: #4CAF50;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 2rem;
+    padding: 1.5rem;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.call-button:hover {
+    transform: scale(1.1);
+}
+
+.call-button.emergency {
+    background: #f44336;
+    animation: pulse 1.5s infinite;
+}
+
+.emergency-hint {
+    text-align: center;
+    color: #f44336;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.emergency-hint.hidden {
+    display: none;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+} 

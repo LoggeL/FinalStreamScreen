@@ -1,0 +1,271 @@
+.stream-end {
+    height: 100%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Stream Info */
+.stream-info {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    color: white;
+    font-size: 16px;
+    z-index: 2;
+}
+
+.stream-info > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.status-badge.live {
+    color: #FF3B30;
+    animation: livePulse 2s infinite;
+}
+
+/* End Stream Button */
+.end-stream-button {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.button-content {
+    width: 100%;
+    height: 100%;
+    background: #FF3B30;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    gap: 10px;
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+.button-content i {
+    font-size: 48px;
+}
+
+.end-stream-button:active .button-content {
+    transform: scale(0.95);
+}
+
+/* Glitch Layers */
+.glitch-layers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.glitch-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FF3B30;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.glitching .glitch-layer:nth-child(1) {
+    animation: glitchLayer1 0.2s infinite;
+    background: #00FF00;
+    mix-blend-mode: screen;
+}
+
+.glitching .glitch-layer:nth-child(2) {
+    animation: glitchLayer2 0.3s infinite;
+    background: #FF00FF;
+    mix-blend-mode: multiply;
+}
+
+.glitching .glitch-layer:nth-child(3) {
+    animation: glitchLayer3 0.25s infinite;
+    background: #00FFFF;
+    mix-blend-mode: overlay;
+}
+
+/* Confirmation Overlay */
+.confirmation-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.confirmation-box {
+    background: #1c1c1e;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+}
+
+.confirmation-box h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+.confirmation-box p {
+    margin: 0 0 20px;
+    color: #8e8e93;
+}
+
+.confirmation-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.confirmation-buttons button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background: #3a3a3c;
+    color: white;
+}
+
+.confirm-button {
+    background: #FF3B30;
+    color: white;
+}
+
+/* Glitch Overlay */
+.glitch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.glitch-text {
+    font-size: 48px;
+    font-weight: bold;
+    color: #FF3B30;
+    text-shadow: 2px 2px #00FF00, -2px -2px #0000FF;
+    animation: textGlitch 0.3s infinite;
+}
+
+.glitch-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.1) 2px,
+        rgba(255, 255, 255, 0.1) 4px
+    );
+    animation: linesScroll 10s linear infinite;
+    pointer-events: none;
+}
+
+/* Reactivation Message */
+.reactivation-message {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 59, 48, 0.9);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 5;
+    animation: messageGlitch 0.5s infinite;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Animations */
+@keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes glitchLayer1 {
+    0%, 100% { transform: translate(0); opacity: 0; }
+    25% { transform: translate(4px, -4px); opacity: 0.3; }
+    50% { transform: translate(-4px, 4px); opacity: 0; }
+    75% { transform: translate(2px, -2px); opacity: 0.3; }
+}
+
+@keyframes glitchLayer2 {
+    0%, 100% { transform: translate(0); opacity: 0; }
+    25% { transform: translate(-4px, 4px); opacity: 0.3; }
+    50% { transform: translate(4px, -4px); opacity: 0; }
+    75% { transform: translate(-2px, 2px); opacity: 0.3; }
+}
+
+@keyframes glitchLayer3 {
+    0%, 100% { transform: translate(0); opacity: 0; }
+    25% { transform: translate(4px, 4px); opacity: 0.3; }
+    50% { transform: translate(-4px, -4px); opacity: 0; }
+    75% { transform: translate(2px, 2px); opacity: 0.3; }
+}
+
+@keyframes textGlitch {
+    0%, 100% { transform: translate(0); }
+    25% { transform: translate(-2px, 2px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-1px, -1px); }
+}
+
+@keyframes linesScroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes messageGlitch {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.02); filter: brightness(1.2); }
+} 

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
+    <title>Movie Scene Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <button class="fullscreen-button" id="fullscreenButton">
+            <i class="fas fa-expand"></i>
+        </button>
+        <div class="menu-view" id="menuView">
+            <h1>#FinalStream Szenen</h1>
+            <div class="scene-grid">
+                <div class="scene-card" data-scene="phonebook">
+                    <div class="scene-icon">
+                        <i class="fas fa-address-book"></i>
+                    </div>
+                    <h3>Telefonbuch</h3>
+                    <p>Kontakte durchsuchen und anrufen</p>
+                </div>
+                <div class="scene-card" data-scene="incoming-call">
+                    <div class="scene-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Hannahs Anruf</h3>
+                    <p>Eingehender Anruf von Hannah</p>
+                </div>
+                <div class="scene-card" data-scene="dialer">
+                    <div class="scene-icon">
+                        <i class="fas fa-phone-square"></i>
+                    </div>
+                    <h3>Wählpad</h3>
+                    <p>Notruf 110 wählen</p>
+                </div>
+                <div class="scene-card" data-scene="gps">
+                    <div class="scene-icon">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+                    <h3>GPS Signal</h3>
+                    <p>Standort wird gesucht...</p>
+                </div>
+                <div class="scene-card" data-scene="stream-control">
+                    <div class="scene-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3>Stream Steuerung</h3>
+                    <p>Streaming-Kontrollen für den Livestream</p>
+                </div>
+                <div class="scene-card" data-scene="stream-chat">
+                    <div class="scene-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Stream Chat</h3>
+                    <p>Jennys Wanderung im Schwarzwald</p>
+                </div>
+                <div class="scene-card" data-scene="stream-end">
+                    <div class="scene-icon">
+                        <i class="fas fa-power-off"></i>
+                    </div>
+                    <h3>Stream Ende</h3>
+                    <p>Stream beenden fehlgeschlagen</p>
+                </div>
+                <div class="scene-card" data-scene="dark-chat">
+                    <div class="scene-icon">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <div class="scene-info">
+                        <h3>Mysteriöser Chat</h3>
+                        <p>Seltsame Nachrichten...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene-view hidden" id="sceneView">
+            <div class="phone-container">
+                <div class="status-bar">
+                    <div class="time">20:30</div>
+                    <div class="icons">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                <div class="call-screen">
+                    <div class="incoming-call">
+                        <div class="caller-info">
+                            <div class="profile-picture">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h1>Hannah</h1>
+                            <p>Mobil</p>
+                        </div>
+                        <div class="call-actions">
+                            <div class="decline-call">
+                                <div class="call-button">
+                                    <i class="fas fa-phone-slash"></i>
+                                    <span>Ablehnen</span>
+                                </div>
+                            </div>
+                            <div class="accept-call">
+                                <div class="call-button">
+                                    <i class="fas fa-phone"></i>
+                                    <span>Annehmen</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="active-call hidden">
+                        <div class="caller-info">
+                            <div class="profile-picture">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h1>Hannah</h1>
+                            <p>00:00</p>
+                        </div>
+                        <div class="call-controls">
+                            <button class="control-button" title="Stumm">
+                                <i class="fas fa-microphone"></i>
+                                <span>Stumm</span>
+                            </button>
+                            <button class="control-button" title="Tastatur">
+                                <i class="fas fa-keyboard"></i>
+                                <span>Tastatur</span>
+                            </button>
+                            <button class="control-button" title="Lautsprecher">
+                                <i class="fas fa-volume-up"></i>
+                                <span>Lautsprecher</span>
+                            </button>
+                            <button class="control-button" title="Kontakt">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Kontakt</span>
+                            </button>
+                            <button class="end-call" title="Auflegen">
+                                <i class="fas fa-phone-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+</html> 
